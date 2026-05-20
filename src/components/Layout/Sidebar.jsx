@@ -1,6 +1,6 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import FeedbackSidebar from '../Feedback/FeedbackSidebar';
+import { useToast } from '../../context/ToastContext';
 
 const navItems = [
   { path: '/', label: 'Dashboard', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
@@ -11,6 +11,8 @@ const navItems = [
 ];
 
 const Sidebar = () => {
+  const { addToast } = useToast();
+
   return (
     <aside style={{
       width: 'var(--sidebar-width)',
@@ -43,6 +45,12 @@ const Sidebar = () => {
             <NavLink
               key={idx}
               to={item.path}
+              onClick={(e) => {
+                if (item.path === '#') {
+                  e.preventDefault();
+                  addToast(`${item.label} coming soon!`);
+                }
+              }}
               style={({ isActive }) => ({
                 display: 'flex',
                 alignItems: 'center',

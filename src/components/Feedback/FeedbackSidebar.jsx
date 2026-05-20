@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import FeedbackModal from './FeedbackModal';
 import { getFeedbackStatus, setFeedbackStatus } from '../../utils/storage';
+import { useToast } from '../../context/ToastContext';
 
 const FeedbackSidebar = () => {
+  const { addToast } = useToast();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasFeedback, setHasFeedback] = useState(false);
 
@@ -19,7 +21,7 @@ const FeedbackSidebar = () => {
     <>
       <div style={{ marginTop: 'auto', padding: '1.5rem', borderTop: '1px solid var(--border)' }}>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: 500, textDecoration: 'none' }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); addToast('Downloading Desktop App...'); }} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: 500, textDecoration: 'none' }}>
             <svg style={{ width: '20px', height: '20px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
@@ -45,7 +47,9 @@ const FeedbackSidebar = () => {
           </div>
         </div>
 
-        <button style={{
+        <button 
+          onClick={() => addToast('Opening Upgrade Modal...')}
+          style={{
           width: '100%',
           padding: '0.75rem',
           backgroundColor: 'var(--text-secondary)',

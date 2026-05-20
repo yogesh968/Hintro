@@ -7,11 +7,13 @@ import ErrorState from '../components/Shared/ErrorState';
 import EmptyState from '../components/Shared/EmptyState';
 import StatsCard from '../components/Dashboard/StatsCard';
 import SessionHistory from '../components/Dashboard/SessionHistory';
+import { useToast } from '../context/ToastContext';
 
 const Dashboard = () => {
   const { profile, loading: profileLoading, error: profileError } = useProfile();
   const { stats, loading: statsLoading, error: statsError } = useStats();
   const { sessions, loading: sessionsLoading, error: sessionsError } = useSessions();
+  const { addToast } = useToast();
 
   if (profileLoading) return <Loader fullScreen />;
   if (profileError) return <ErrorState message={profileError} />;
@@ -31,7 +33,9 @@ const Dashboard = () => {
             Ready to make your next call smarter ?
           </p>
         </div>
-        <button style={{
+        <button 
+          onClick={() => addToast('Starting a new call...')}
+          style={{
           backgroundColor: 'var(--text)',
           color: 'var(--surface)',
           padding: '0.625rem 1.25rem',
@@ -58,7 +62,7 @@ const Dashboard = () => {
                 </div>
                 <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Upload files</h4>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>Add files for contextual understanding</p>
-                <button style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', fontWeight: 500 }}>Upload Now</button>
+                <button onClick={() => addToast('Opening file picker...')} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', fontWeight: 500, cursor: 'pointer' }}>Upload Now</button>
               </div>
               <div style={{ padding: '2rem 1.5rem', backgroundColor: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted)', marginBottom: '1rem', letterSpacing: '0.05em' }}>STEP 2</div>
@@ -67,7 +71,7 @@ const Dashboard = () => {
                 </div>
                 <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Start your call</h4>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>Hintro joins as an AI participant</p>
-                <button style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--text)', color: 'white', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 500 }}>Start Call</button>
+                <button onClick={() => addToast('Hintro is joining the call...')} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--text)', color: 'white', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 500, cursor: 'pointer' }}>Start Call</button>
               </div>
               <div style={{ padding: '2rem 1.5rem', backgroundColor: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted)', marginBottom: '1rem', letterSpacing: '0.05em' }}>STEP 3</div>
@@ -76,7 +80,7 @@ const Dashboard = () => {
                 </div>
                 <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>View Insights</h4>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>Review notes and action items after the call</p>
-                <button style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', fontWeight: 500 }}>View Insights</button>
+                <button onClick={() => addToast('Opening Insights...')} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', fontWeight: 500, cursor: 'pointer' }}>View Insights</button>
               </div>
             </div>
           </div>
@@ -95,6 +99,7 @@ const Dashboard = () => {
               title="No Recent Calls"
               description="Connect your Google Calendar to see upcoming meetings, get reminders, and join calls directly from Hintro."
               actionText="Start a Call"
+              onAction={() => addToast('Starting a new call...')}
             />
           </div>
         </>
