@@ -15,6 +15,10 @@ apiClient.interceptors.request.use((config) => {
   if (userId) {
     config.headers['x-user-id'] = userId;
   }
+  const token = localStorage.getItem('hintro_auth_token');
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`;
+  }
   return config;
 });
 

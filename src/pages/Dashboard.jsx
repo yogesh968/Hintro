@@ -17,9 +17,7 @@ const Dashboard = () => {
 
   if (profileLoading) return <Loader fullScreen />;
   if (profileError) return <ErrorState message={profileError} />;
-
-  // Determine if it's an empty state (e.g. for User 1)
-  // According to requirements, u1 has no stats and no sessions
+ 
   const isEmptyState = !statsLoading && stats?.totalSessions === 0 && (!sessions || sessions.length === 0);
 
   return (
