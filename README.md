@@ -40,26 +40,6 @@
 
 ---
 
-##  Table of Contents
-
-- [Overview](#-overview)
-- [Live Demo](#-live-demo)
-- [Tech Stack](#-tech-stack)
-- [Features](#-features)
-- [Project Structure](#-project-structure)
-- [Architecture & Data Flow](#-architecture--data-flow)
-- [Design System](#-design-system)
-- [Component Reference](#-component-reference)
-- [Custom Hooks](#-custom-hooks)
-- [API Reference](#-api-reference)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [Deployment](#-deployment)
-- [Design Decisions](#-design-decisions)
-- [Assumptions](#-assumptions)
-- [License](#-license)
-
----
 
 ##  Overview
 
