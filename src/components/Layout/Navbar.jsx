@@ -5,7 +5,7 @@ import { useToast } from '../../context/ToastContext';
 import LogoutModal from '../Shared/LogoutModal';
 
 const Navbar = () => {
-  const { activeUser, switchUser } = useContext(UserContext);
+  const { activeUser, switchUser, logout } = useContext(UserContext);
   const { profile } = useProfile();
   const { addToast } = useToast();
   
@@ -27,6 +27,7 @@ const Navbar = () => {
     setIsLogoutModalOpen(false);
     addToast('Logged out successfully');
     switchUser('u1'); // Reset to empty state for demo purposes
+    logout();
   };
 
   return (
