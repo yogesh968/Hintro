@@ -40,7 +40,7 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#-overview)
 - [Live Demo](#-live-demo)
@@ -61,7 +61,7 @@
 
 ---
 
-## 🧠 Overview
+##  Overview
 
 **Hintro** is a sleek, pixel-perfect dashboard for an AI-powered call intelligence platform. It was built as a frontend engineering assignment to demonstrate real-world React architecture at scale — without reaching for a single third-party UI component.
 
@@ -78,7 +78,7 @@ Switching between users is instant via the navbar dropdown. The `x-user-id` head
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
 > Deployed on Vercel — [**View Live →**](#)
 
@@ -104,25 +104,25 @@ Switching between users is instant via the navbar dropdown. The `x-user-id` head
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🔄 Dynamic User Switching
+###  Dynamic User Switching
 Toggle between `u1` and `u2` from the navbar dropdown. The `x-user-id` header is injected into every API request via an Axios request interceptor — no prop drilling, no manual header management. The selected user persists across page reloads via `localStorage`.
 
-### 📊 Data-Driven Dashboard
+###  Data-Driven Dashboard
 - **Stats Grid** — 4 KPI cards: Total Sessions, Average Duration, AI Used, Last Session — each with a colour-coded icon badge
 - **Session History** — Calls grouped by date with participant avatar stacks, session titles, and formatted timestamps
 - **Empty State** — When `u1` has no data, a 3-step "How it works" onboarding flow renders instead
 
-### 💀 Skeleton Loaders
+###  Skeleton Loaders
 Every async section renders animated placeholder cards while data is in-flight. No layout shift, no blank screens.
 
-### 💬 Feedback System
+###  Feedback System
 - Sidebar trigger opens an animated modal (Framer Motion `AnimatePresence`)
 - Form with textarea, loading spinner on submit, and a success checkmark animation
 - Submission state persisted to `localStorage` — green dot indicator appears after first submission
 
-### 🎨 Global Theme System
+###  Global Theme System
 All design tokens live in `variables.css`:
 - Colors (background, surface, text, borders, semantic states)
 - Stat card accent palette (pink, teal, purple, violet)
@@ -130,7 +130,7 @@ All design tokens live in `variables.css`:
 - Border radii (sm / md / lg / xl)
 - Layout dimensions (sidebar width, navbar height)
 
-### 📱 Responsive Layout
+###  Responsive Layout
 - Fixed 220px sidebar collapses gracefully on smaller viewports
 - Stats grid uses `auto-fit minmax(200px, 1fr)` for fluid reflow
 - Sticky navbar stays accessible at all scroll depths
@@ -258,7 +258,7 @@ Navbar dropdown onChange
 
 ---
 
-## 🎨 Design System
+##  Design System
 
 All tokens are defined in `src/styles/variables.css` and consumed via CSS custom properties. Zero hardcoded values exist in any component file.
 
@@ -309,7 +309,7 @@ All tokens are defined in `src/styles/variables.css` and consumed via CSS custom
 
 ---
 
-## 🧩 Component Reference
+##  Component Reference
 
 ### Layout Components
 
@@ -484,7 +484,7 @@ apiClient.interceptors.response.use(
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -575,7 +575,7 @@ The included `vercel.json` handles SPA client-side routing:
 
 ---
 
-## 🤔 Design Decisions
+##  Design Decisions
 
 ### Context API over Redux
 The app has exactly one piece of shared global state — the active user ID. Context API is the correct tool for this scope. Redux would introduce a reducer, actions, selectors, and a store for a single string value — that's over-engineering.
@@ -594,7 +594,7 @@ The mock API returns no avatar URLs. `pravatar.cc` provides deterministic placeh
 
 ---
 
-## 📌 Assumptions
+## Assumptions
 
 1. **Empty state detection** — `u1` is identified by `stats.totalSessions === 0` combined with an empty `sessions` array. This is the agreed signal for the onboarding flow.
 2. **Participant avatars** — Since the API returns no avatar URLs, `pravatar.cc` placeholders are seeded by participant index for visual consistency.
